@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\CategoriesRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: CategoriesRepository::class)]
+class Categories
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $cat_label = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getCatLabel(): ?string
+    {
+        return $this->cat_label;
+    }
+
+    public function setCatLabel(string $cat_label): static
+    {
+        $this->cat_label = $cat_label;
+
+        return $this;
+    }
+
+}
